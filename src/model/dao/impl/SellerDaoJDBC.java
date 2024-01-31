@@ -14,7 +14,7 @@ import java.util.Map;
 
 public class SellerDaoJDBC implements SellerDao {
 
-    private Connection conn;
+    private final Connection conn;
 
     public SellerDaoJDBC(Connection conn) {
         this.conn = conn;
@@ -163,7 +163,6 @@ public class SellerDaoJDBC implements SellerDao {
 
             List<Seller> sellers = new ArrayList<>();
             Map<Integer, Department> map = new HashMap<>();
-
             while (rs.next()) {
                 Department dep = map.get(rs.getInt("DepartmentId"));
                 if (dep == null) {

@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Scanner;
 
-public class Program {
+public class SellerProgram {
 
     public static void main(String[] args) {
 
