@@ -5,6 +5,7 @@ import model.dao.DaoFactory;
 import model.dao.SellerDao;
 import model.entities.Seller;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public class Program {
@@ -24,6 +25,13 @@ public class Program {
         System.out.println("\n--- TEST 3: seller findAll ---");
         sellers = sellerDao.findAll();
         sellers.forEach(System.out::println);
+
+        System.out.println("\n--- TEST 4: seller insert ---");
+        Seller newSeller = new Seller(null, "Greg Brown", "greg@gmail.com", LocalDate.parse("2000-07-10"), 4000.0, seller.getDepartment());
+        sellerDao.insert(newSeller);
+        if (newSeller.getId() != null) {
+            System.out.println("Inserted! New id = " + newSeller.getId());
+        }
 
         DB.closeConnection();
 
