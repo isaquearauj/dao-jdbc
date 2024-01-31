@@ -23,8 +23,8 @@ Este projeto é um exemplo prático de um sistema CRUD (Create, Read, Update, De
 ## Como Executar
 
 Para executar este projeto, você precisará ter instalado em sua máquina:
-- Java JDK
-- MySQL
+- Java JDK 21
+- MySQL 8.0
 
 ### Passos para Execução
 
