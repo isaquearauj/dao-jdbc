@@ -8,10 +8,13 @@ import model.entities.Seller;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
+import java.util.Scanner;
 
 public class Program {
 
     public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
 
         SellerDao sellerDao = DaoFactory.createSellerDao();
 
@@ -28,7 +31,7 @@ public class Program {
         sellers.forEach(System.out::println);
 
         System.out.println("\n--- TEST 4: seller insert ---");
-        Seller newSeller = new Seller(null, "Alice Pink", "alice@gmail.com", LocalDate.parse("2004-01-06"), 4000.0, seller.getDepartment());
+        Seller newSeller = new Seller(null, "Greg Brown", "greg@gmail.com", LocalDate.parse("2000-07-10"), 4000.0, seller.getDepartment());
         sellerDao.insert(newSeller);
         if (newSeller.getId() != null) {
             System.out.println("Inserted! New id = " + newSeller.getId());
@@ -40,6 +43,16 @@ public class Program {
         sellerDao.update(seller);
         if (Objects.equals(sellerDao.findById(1).getName(), "Martha Grimes")) {
             System.out.println("Update completed!");
+        }
+
+        System.out.println("\n--- TEST 6: seller delete ---");
+        System.out.print("Enter id for delete test: ");
+        int id = sc.nextInt();
+        if (sellerDao.findById(id) != null) {
+            sellerDao.deleteById(id);
+            System.out.println("Delete completed!");
+        } else {
+            System.out.println("Id not found!");
         }
 
         DB.closeConnection();
